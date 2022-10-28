@@ -13,10 +13,13 @@ output:
 Does factors like ethnicity, gender or age affect whether Ethiopians feel that they have the freedom of speech? Ethiopia is considered a federal
 parliamentary republic (Federal Democratic Republic of Ethiopia).My data will be coming from Afrobarometer 2020 Ethiopian Survey. 
 I am interested in examining how explanatory variables such as ethnicity, gender and age affects political attitudes in Ethiopia. 
-Ethnicity will be measured by number. 1340 = "Oromo", 1341 = Amhara, 1342 = Somali, 1343 = Tigre, 1344 = Sidama, 1345 = Guragie and so on for the ethnic groups. 
-Gender would be coded as 2 = "Female", 1 = "Male." Age is coded simply by the number of the age of the respondents. Freedom will be coded on a 1-4 point scale as 1 = Not free at all, 2 = Not very free, 3 = Somewhat free, 4 = Completely free. 
+Ethnicity will be measured by number. 
+1340 = "Oromo", 1341 = Amhara, 1342 = Somali, 1343 = Tigre, 1344 = Sidama, 1345 = Guragie and so on for the ethnic groups. 
+Gender would be coded as 2 = "Female", 1 = "Male." Age is coded simply by the number of the age of the respondents. 
+Freedom will be coded on a 1-4 point scale as 1 = Not free at all, 2 = Not very free, 3 = Somewhat free, 4 = Completely free. 
 This is based off of 2020 survey. My hypothesis is that those who are younger, from ethnic groups that are in power during 2020 (Oromos and Amharas), and male will be more likely to say that they have political freedom in the country. 
-If I observe that groups such as young males who Oromos and Amharas say that they have a higher rating of freedom, then my hypothesis will be supported. If older females from other ethnic groups such as the Tigres say that they have a higher rating of freedom in the country then my hypothesis will be disproved. 
+If I observe that groups such as young males who Oromos and Amharas say that they have a higher rating of freedom, then my hypothesis will be supported. 
+If older females from other ethnic groups such as the Tigres say that they have a higher rating of freedom in the country then my hypothesis will be disproved. 
 
 https://www.afrobarometer.org/wp-content/uploads/2022/02/eth_r8.codebook_27may21.final_.pdf
 https://www.afrobarometer.org/survey-resource/ethiopia-round-8-dataset-2020/

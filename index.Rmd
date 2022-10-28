@@ -1,19 +1,11 @@
 ---
-title: "NBA"
+title: "Ethiopia"
 author: "Tsiyon Geremew"
 description: ""
 output:
   distill::distill_article:
     self_contained: false
 ---
-You should write a one-paragraph note to describe what data set you will use and what your tentative research question is. Your research question should ask how one dependent variable is related to one or more independent variables. That is, your research question should be able to be answered by a regression analysis. In this paragraph, you should do the following:
-
-State your research question.
-Formulate a hypothesis related to the research question. This hypothesis should be rooted in some sort of theory. In other words, you need to present a plausible story why the hypothesis might be true. Often, this is in the form of a behaviorial or institutional explanation. As social scientists, we are not interested in idiosyncratic explanations; we want to understand systematic patterns and relationships!
-Describe your explanatory variable(s) of interest and how it is measured. Importantly, we need to observe variation in this variable in order to study it!
-Describe your outcome variable of interest and how it is measured.
-What observed pattern in the data would provide support for your hypothesis? More importantly, what observed pattern would disprove your hypothesis?
-
 
 ## Milestone 2
 

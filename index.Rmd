@@ -25,3 +25,74 @@ https://www.afrobarometer.org/wp-content/uploads/2022/02/eth_r8.codebook_27may21
 https://www.afrobarometer.org/survey-resource/ethiopia-round-8-dataset-2020/
 
 
+##SET UP
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(haven)
+library(broom)
+```
+## Read the file
+```{r}
+data1 <- read_spss("data1ethiopia.sav")
+data1
+```
+
+```{r}
+selected_data1 <- data1 |>
+  select(RESPNO, Q10A,REGION, Q101, Q81, Q2, Q1) |>
+  rename( "Freedom"= "Q10A", "Gender" = "Q101", "Tribe" = "Q81", "Age" = "Q1", "Home_Language" = "Q2") |>
+  mutate(gender = if_else(Gender == 1, "Male", "Female"), tribe = case_when(Tribe == 1340 ~ "Oromo",Tribe == 1341 ~ "Amhara", 
+                                                                            Tribe == 1342 ~ "Somali", Tribe == 1343 ~"Tigre", 
+                                                                            Tribe == 1344 ~ "Sidama", Tribe == 1345 ~ "Guragie", 
+                                                                            Tribe == 1346 ~ "Silte", Tribe == 1347 ~ "Welayta", 
+                                                                            Tribe == 1348 ~ "Hadiya", Tribe == 1349 ~"Kembata", 
+                                                                            Tribe == 1350 ~ "Gedeo", Tribe == 1351 ~ "Gamo", 
+                                                                            Tribe == 1352 ~ "Kaffa", Tribe == 1354 ~ "Harari",
+                                                                            Tribe == 1355 ~ "Agnawak", Tribe == 1356 ~ "Nuer", 
+                                                                            Tribe == 1357 ~ "Dinka", Tribe == 1358 ~ "MeJenge", 
+                                                                            Tribe == 1359 ~ "Shinasha", Tribe == 1360 ~ "Berta", 
+                                                                            Tribe == 1361 ~ "Agew", Tribe == 1362 ~ "Ari", 
+                                                                            Tribe == 1363 ~ "Bena Tsemay", Tribe == 1364 ~ "Bench", 
+                                                                            Tribe == 1365 ~ "Gofa", Tribe == 1366 ~ "Gumuz", 
+                                                                            Tribe == 1367 ~ "Koore", Tribe == 9990 ~ "Ethiopian",
+                                                                            Tribe == 9998 ~ "Refused")) |>
+  drop_na()
+
+selected_data1
+
+```
+The Oromo ethnic group appears to be the largest followed by Amhara.
+```{r}
+tribecount<- selected_data1 |>
+  ggplot(aes(x = tribe)) +
+  geom_bar(stat = "count") +
+  scale_x_discrete(guide = guide_axis(n.dodge=3))
+tribecount
+
+
+knitr::kable(gendercount)
+
+```
+
+##Comparing Ethnicity and freedom response
+
+```{r}
+mean_Freedom_by_tribe <-selected_data1 |>
+  group_by(tribe)|>
+  summarize(mean_Freedom = mean(Freedom))
+mean_Freedom_by_tribe
+
+knitr::kable(mean_Freedom_by_tribe, col.names = c("Tribe", "Average Rating of Freedom"))
+```
+Bena Tsemay and Kembata are the two tribes that report the highest average rating of freedom in the country. These two tribes are one of the smallest ethnic groups in Ethiopia. The lowest two average rating of freedom goes to the Dinka tribe and the Shinasha which are also two of the smallest ethnic groups in the country. The Dinka tribe is largely found in South Sudan and not Ethiopia. The Shinasha people are also very small in the population of Ethiopia. The Tigre are a notably sized group at around (6%) of the population and they express the 4th highest average rating of freedom. 
+```{r}
+mean_Freedom_by_tribe |>
+  ggplot(aes(x = tribe, y = mean_Freedom)) +
+  guides(x = guide_axis(angle = 90)) +
+  labs (x = "Tribe", y = "Average Rating of Freedom") +
+  geom_point()
+```
+
+
+

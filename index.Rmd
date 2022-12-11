@@ -272,7 +272,7 @@ SECTION ON REGRESSION
 ## How does gender affect the rating of freedom?
 Gender appears to be statistically insignificant on the rating of freedom of Ethiopians.
 ```{r}
-fit <- lm(Freedom ~ gender, data = final_data)
+fit <- lm(Freedom ~ gender, data = selected_data1)
   summary(fit)
 
 ```
@@ -281,7 +281,7 @@ fit <- lm(Freedom ~ gender, data = final_data)
 ## How does the average rating of freedom compare when you account for age
  Age appears very statistically significant when it comes to the way Ethiopians rate their freedom of speech.
 ```{r}
-fit_1 <- lm(Freedom ~ Age, data = final_data)
+fit_1 <- lm(Freedom ~ Age, data = selected_data1)
   summary(fit_1)
 ```
 
@@ -289,20 +289,20 @@ fit_1 <- lm(Freedom ~ Age, data = final_data)
 ## How does the rating of freedom compare when you account for age and gender and urban/rural?
 Age appears statistically significant again even when you hold for gender and if the respondent lives in rural or urban areas.
 ```{r}
-fit_2 <- lm(Freedom ~ Age + gender + Urban, data = final_data)
+fit_2 <- lm(Freedom ~ Age + gender + Urban, data = selected_data1)
   summary(fit_2)
 ```
 
 ## How does the rating of freedom compare when you account for tribes.
 Most tribes don't appear to have any statistical signficance when it comes to how individuals rate their freedom of speech.
 ```{r}
-fit_3 <- lm(Freedom ~ tribe, data = final_data)
+fit_3 <- lm(Freedom ~ tribe, data = selected_data1)
   summary(fit_3)
 ```
 
 ## Subsetting for the 4 major ethnic groups
 ```{r}
-subset_final_data <- final_data |>
+subset_final_data <- selected_data1 |>
   filter(tribe %in% c("Amhara", "Oromo", "Tigre", "Somali"))
 subset_final_data
 ```
@@ -329,7 +329,7 @@ test_subset_fit <- lm(Freedom ~ Urban + Age + tribe, data = subset_final_data)
 ##How does factoring for Urban/Rurual, Age and Tribe affect each individuals rating of their freedom of speech? 
 Age appears to be statistically significant when one holds for urban or rural and when one holds for tribe. 
 ```{r}
-test_fit <- lm (Freedom ~ Urban + Age + tribe, data = final_data)
+test_fit <- lm (Freedom ~ Urban + Age + tribe, data = selected_data1)
   summary(test_fit)
 ```
 

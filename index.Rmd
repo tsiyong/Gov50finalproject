@@ -16,7 +16,8 @@ https://www.afrobarometer.org/wp-content/uploads/2022/02/eth_r8.codebook_27may21
 https://www.afrobarometer.org/survey-resource/ethiopia-round-8-dataset-2020/
 
 
-##SET UP
+## SET UP
+
 ```{r}
 library(tidyverse)
 library(ggplot2)
@@ -96,7 +97,7 @@ selected_data1 |>
 ```
 
 
-The Oromo ethnic group appears to be the largest followed by Amhara.
+## The Oromo ethnic group appears to be the largest followed by Amhara.
 ```{r}
 tribecount<- selected_data1 |>
   ggplot(aes(x = tribe)) +
@@ -114,8 +115,11 @@ knitr:: kable(tribecount)
 
 ```
 
-##Comparing Ethnicity and freedom response
+## Comparing Ethnicity and freedom response
+
 ##This plot summarizes the main dependent variable which is rating of average freedom.
+
+
 ```{r}
 mean_Freedom_by_tribe <-selected_data1 |>
   group_by(tribe)|>
@@ -125,9 +129,9 @@ mean_Freedom_by_tribe
 
 knitr::kable(mean_Freedom_by_tribe, col.names = c("Tribe", "Average Rating of Freedom"))
 ```
-##Bena Tsemay and Kembata are the two tribes that report the highest average rating of freedom in the country. These two tribes are one of the smallest ethnic groups in Ethiopia. The lowest two average rating of freedom goes to the Dinka tribe and the Shinasha which are also two of the smallest ethnic groups in the country. The Dinka tribe is largely found in South Sudan and not Ethiopia. The Shinasha people are also very small in the population of Ethiopia. The Tigre are a notably sized group at around (6%) of the population and they express the 4th highest average rating of freedom. 
+Bena Tsemay and Kembata are the two tribes that report the highest average rating of freedom in the country. These two tribes are one of the smallest ethnic groups in Ethiopia. The lowest two average rating of freedom goes to the Dinka tribe and the Shinasha which are also two of the smallest ethnic groups in the country. The Dinka tribe is largely found in South Sudan and not Ethiopia. The Shinasha people are also very small in the population of Ethiopia. The Tigre are a notably sized group at around (6%) of the population and they express the 4th highest average rating of freedom. 
 
-##Calculating the average rating of freedom of speech of each tribe
+## Calculating the average rating of freedom of speech of each tribe
 ```{r}
 mean_Freedom_by_tribe |>
   ggplot(aes(x = tribe, y = mean_Freedom)) +
@@ -136,8 +140,8 @@ mean_Freedom_by_tribe |>
   geom_point()
 mean_Freedom_by_tribe
 ```
-## How do Oromos in rural vs Urban communities rate their freedom
-##I find that Oromos who live in Rural communities rate their freedom slightly higher than Oromos who live in urban communities.
+## How do Oromos in rural vs Urban communities rate their freedom?
+## I find that Oromos who live in Rural communities rate their freedom slightly higher than Oromos who live in urban communities.
 ```{r}
 oromo_urban <- selected_data1|>
   filter(tribe == "Oromo", Urban == 1) |>
@@ -150,8 +154,8 @@ oromo_rural <- selected_data1|>
 knitr::kable(oromo_rural, col.names = "Average Rating of Freedom for Rural Oromos")
 ```
 
-##How do Amharas in rural communities vs urban communities rate their freedom
-##I find that Oromos who live in Rural communities rate their freedom slightly higher than Oromos who live in urban communities.
+## How do Amharas in rural communities vs urban communities rate their freedom?
+## I find that Amharas who live in Rural communities rate their freedom slightly higher than Amharas who live in urban communities.
 ```{r}
 amhara_urban <- selected_data1|>
   filter(tribe == "Amhara", Urban == 1) |>
@@ -164,8 +168,8 @@ amhara_rural <- selected_data1|>
 knitr::kable(amhara_rural, col.names = "Average Rating of Freedom for Rural Amharas")
 ```
 
-##How do Tigres in urban vs rural communities rate their freedom of speech?
-##I find that rural Tigres have a higher rating of freedom of speech than urban Tigres.
+## How do Tigres in urban vs rural communities rate their freedom of speech?
+## I find that rural Tigres have a higher rating of freedom of speech than urban Tigres.
 ```{r}
 tigre_urban <- selected_data1|>
   filter(tribe == "Tigre", Urban == 1) |>
@@ -178,8 +182,8 @@ tigre_rural <- selected_data1|>
 knitr::kable(tigre_rural, col.names = "Average Rating of Freedom for Rural Tigres")
 ```
 
-##How do Somalis in urban vs rural communities rate their freedom of speech?
-##I find that rural somalis rate their freedom of speech higher than urban somalis.
+## How do Somalis in urban vs rural communities rate their freedom of speech?
+## I find that rural somalis rate their freedom of speech higher than urban somalis.
 ```{r}
 somali_urban <- selected_data1|>
   filter(tribe == "Somali", Urban == 1) |>
@@ -192,10 +196,10 @@ somali_rural <- selected_data1|>
 knitr::kable(somali_rural, col.names = "Average Rating of Freedom for Rural Somalis")
 ```
 
-##Overall, from the 4 major tribes I looked at, it looks like individuals who rated higher levels of freedom of speech were in rural communities in comparison to those in urban communities.
+## Overall, from the 4 major tribes I looked at, it looks like individuals who rated higher levels of freedom of speech were in rural communities in comparison to those in urban communities.
 
 
-##Age count of ethiopians
+## Age count of ethiopians
 ```{r}
 agecount <- selected_data1 |>
   group_by(Age) |>
@@ -203,7 +207,7 @@ agecount <- selected_data1 |>
 agecount
 ```
 
-## How does the average rating of freedom of speech vary across age
+## How does the average rating of freedom of speech vary across age?
 ```{r}
 age_rating <- selected_data1 |>
   group_by(Age) |>
@@ -212,8 +216,8 @@ age_rating
 ```
 
 
-##Grouping age groups by every 10 years and seeing how their ratings of freedom of speech vary
-##It appears that the older age groups tend to have higher average ratings of freedom of speech than younger age groups.
+## Grouping age groups by every 10 years and seeing how their ratings of freedom of speech vary
+## It appears that the older age groups tend to have higher average ratings of freedom of speech than younger age groups.
 ```{r}
 age_effect <-selected_data1 |>
   group_by(age_group)|>
@@ -228,7 +232,7 @@ age_effect
 ```
 
 ## What is the average rating of freedom of speech when an individual's home language is the same as the language used in the interview?
-##It appears that the average rating of freedom of speech is higher (3.18) when the home language of the respondent does not match the language used in the interview than the average rating of freedom of speech when the home language and the interview language was the same (3.08). It also appears those who are rural appear to rate their freedom of speech higher than those who are urban. This has found to be true to other analysis done above as well. 
+## It appears that the average rating of freedom of speech is higher (3.18) when the home language of the respondent does not match the language used in the interview than the average rating of freedom of speech when the home language and the interview language was the same (3.08). It also appears those who are rural appear to rate their freedom of speech higher than those who are urban. This has found to be true to other analysis done above as well. 
 ```{r}
 language__match <- selected_data1 |>
   mutate(languagematch = if_else(Home_Language == Interview_Language, "1", "0", missing = NULL))
@@ -269,7 +273,7 @@ language_nomatch_rural
 SECTION ON REGRESSION
 
 ## How does gender affect the rating of freedom?
-##Gender appears to be statistically insignificant on the rating of freedom of Ethiopians.
+## Gender appears to be statistically insignificant on the rating of freedom of Ethiopians.
 ```{r}
 fit <- lm(Freedom ~ gender, data = selected_data1)
   summary(fit)
@@ -277,8 +281,8 @@ fit <- lm(Freedom ~ gender, data = selected_data1)
 ```
 
 
-## How does the average rating of freedom compare when you account for age
-##Age appears very statistically significant when it comes to the way Ethiopians rate their freedom of speech.
+## How does the average rating of freedom compare when you account for age?
+## Age appears very statistically significant when it comes to the way Ethiopians rate their freedom of speech.
 ```{r}
 fit_1 <- lm(Freedom ~ Age, data = selected_data1)
   summary(fit_1)
@@ -286,14 +290,14 @@ fit_1 <- lm(Freedom ~ Age, data = selected_data1)
 
 
 ## How does the rating of freedom compare when you account for age and gender and urban/rural?
-##Age appears statistically significant again even when you hold for gender and if the respondent lives in rural or urban areas.
+## Age appears statistically significant again even when you hold for gender and if the respondent lives in rural or urban areas.
 ```{r}
 fit_2 <- lm(Freedom ~ Age + gender + Urban, data = selected_data1)
   summary(fit_2)
 ```
 
-## How does the rating of freedom compare when you account for tribes.
-##Most tribes don't appear to have any statistical signficance when it comes to how individuals rate their freedom of speech.
+## How does the rating of freedom compare when you account for tribes?
+## Most tribes don't appear to have any statistical signficance when it comes to how individuals rate their freedom of speech.
 ```{r}
 fit_3 <- lm(Freedom ~ tribe, data = selected_data1)
   summary(fit_3)
@@ -308,25 +312,25 @@ subset_final_data
 
 
 
-MAIN REGRESSION 
+## MAIN REGRESSION 
 ## How does only focusing on the 4 major ethnic groups/tribes affect the level of freedom of speech?
-##Individuals who are from either the Somali tribe or Tigre tribe hold statistical signficance. Somalis feel less freedom of speech than Amharas (reference group) and the Tigres feel more freedom of speech than the Amharas. Oromos feel less freedom of speech than Amharas but it is not statistically significant enough.
+## Individuals who are from either the Somali tribe or Tigre tribe hold statistical signficance. Somalis feel less freedom of speech than Amharas (reference group) and the Tigres feel more freedom of speech than the Amharas. Oromos feel less freedom of speech than Amharas but it is not statistically significant enough.
 ```{r}
 test_subset_fit <- lm(Freedom ~ tribe, data = subset_final_data)
   summary(test_subset_fit)
 ```
 
-MAIN MULTIPLE REGRESSION
+# MAIN MULTIPLE REGRESSION
 
 ## How does the 4 major ethnic groups/tribes, while holding for urban/rural & age affect the level of freedom of speech?
-##Amhara is the reference group so when you examine Urban1 it shows that whether someone is Urban or Rural does not hold significance. Oromos appear to feel that they have less freedom of speech than Amharas but it is not statistically significant. Somalis appear to feel that they also feel less freedom of speech than Amharas and it is statistically significant. Tigres feel that they have more freedom of speech than Amharas and it is statistically signficant. It also appears that if there was neither urban/rural/, age or tribe, that the freedom level would be around 2.99 and it appears to be very statistically significant. Overall, based on the history of Ethiopia, I find that this survey conducted by Afrobameter appears to be done well and is reflected on the country. An important thing to note is that the r^2 and adjusted r^2 are low values which shows that model could be improved but due to time constraints/limitations, there are more variables that could bring a better fit for the model.
+## Amhara is the reference group so when you examine Urban1 it shows that whether someone is Urban or Rural does not hold significance. Oromos appear to feel that they have less freedom of speech than Amharas but it is not statistically significant. Somalis appear to feel that they also feel less freedom of speech than Amharas and it is statistically significant. Tigres feel that they have more freedom of speech than Amharas and it is statistically signficant. It also appears that if there was neither urban/rural/, age or tribe, that the freedom level would be around 2.99 and it appears to be very statistically significant. Overall, based on the history of Ethiopia, I find that this survey conducted by Afrobameter appears to be done well and is reflected on the country. An important thing to note is that the r^2 and adjusted r^2 are low values which shows that model could be improved but due to time constraints/limitations, there are more variables that could bring a better fit for the model.
 ```{r}
 test_subset_fit <- lm(Freedom ~ Urban + Age + tribe, data = subset_final_data)
   summary(test_subset_fit)
 ```
 
-##How does factoring for Urban/Rurual, Age and Tribe affect each individuals rating of their freedom of speech? 
-##Age appears to be statistically significant when one holds for urban or rural and when one holds for tribe. 
+## How does factoring for Urban/Rurual, Age and Tribe affect each individuals rating of their freedom of speech? 
+## Age appears to be statistically significant when one holds for urban or rural and when one holds for tribe. 
 ```{r}
 test_fit <- lm (Freedom ~ Urban + Age + tribe, data = selected_data1)
   summary(test_fit)
@@ -334,4 +338,4 @@ test_fit <- lm (Freedom ~ Urban + Age + tribe, data = selected_data1)
 
 
 ## Conclusion
-##It appears age plays a statistically signficant role in how individuals rate their level of freedom of speech. Also when one focuses on the four major tribes we see the effect that the four major tribes actually have. With both Somali tribe and Tigre tribe having statistically significance. With somali's feeling less freedom of speech levels than Amharas which were the reference groups and Tigres feeling more freedom of speech levels than Amharas. Additionally, urban or rural classification no longer seemed to play a role in the ratings of level of freedom of speech once put into the regression line. Due to the nature of the research design being cross-sectional, the coeffcient does not represent a causal effect. Additionally, some limitations of this project was that there was a long list of questions that were asked and so I could only select a few factors that I thought could be important in how Ethiopians view their freedom of speech levels however the low Adjusted R-squared values indicat that there is more going on here and that the few variables that I selected are not showing the entire picture. I think a way to improve this study in the future is through finding way to improve the respondents likelihood of responding truthfully. Overall, I found that this project displayed an accurate representation of the levels of freedom of speech tribes state that they experience.
+## It appears age plays a statistically signficant role in how individuals rate their level of freedom of speech. Also when one focuses on the four major tribes we see the effect that the four major tribes actually have. With both Somali tribe and Tigre tribe having statistically significance. With somali's feeling less freedom of speech levels than Amharas which were the reference groups and Tigres feeling more freedom of speech levels than Amharas. Additionally, urban or rural classification no longer seemed to play a role in the ratings of level of freedom of speech once put into the regression line. Due to the nature of the research design being cross-sectional, the coeffcient does not represent a causal effect. Additionally, some limitations of this project was that there was a long list of questions that were asked and so I could only select a few factors that I thought could be important in how Ethiopians view their freedom of speech levels however the low Adjusted R-squared values indicat that there is more going on here and that the few variables that I selected are not showing the entire picture. I think a way to improve this study in the future is through finding way to improve the respondents likelihood of responding truthfully. Overall, I found that this project displayed an accurate representation of the levels of freedom of speech tribes state that they experience.

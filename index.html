@@ -1521,7 +1521,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>The dependent variable is the average rating of Freedom of speech in Ethiopia was caclulated from a question asked in the Afrobarometer question which conducted a 1-4 point scale. 1 meant not at all free, 2 meant not very free, 3 meant somewhat free, 4 meant completely free. The Afrobarometer conducted surverys on Ethiopians across the country from urban to rural areas. The type of research design I am doing is cross-sectional as I am looking at how different factors like ethnicity/tribe, gender, urban or rural classification, age and so on affect Ethiopians rating of freedom of speech. My main independent/explanatory variable is tribes as I look at all the tribes listed in the survey and I also focus on the four main tribes of Ethiopia as well.</p>
 <p><a href="https://www.afrobarometer.org/wp-content/uploads/2022/02/eth_r8.codebook_27may21.final_.pdf" class="uri">https://www.afrobarometer.org/wp-content/uploads/2022/02/eth_r8.codebook_27may21.final_.pdf</a>
 <a href="https://www.afrobarometer.org/survey-resource/ethiopia-round-8-dataset-2020/" class="uri">https://www.afrobarometer.org/survey-resource/ethiopia-round-8-dataset-2020/</a></p>
-##SET UP
+<h2 id="set-up">SET UP</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
@@ -1639,7 +1639,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #   age_group &lt;chr&gt;, ethnic_discrimination &lt;chr&gt;, and abbreviated
 #   variable names ¹​Home_Language, ²​MTongueComfort, ³​CulturalComfort</code></pre>
 </div>
-The Oromo ethnic group appears to be the largest followed by Amhara.
+<h2 id="the-oromo-ethnic-group-appears-to-be-the-largest-followed-by-amhara.">The Oromo ethnic group appears to be the largest followed by Amhara.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>tribecount</span><span class='op'>&lt;-</span> <span class='va'>selected_data1</span> <span class='op'>|&gt;</span></span>
@@ -1767,8 +1767,8 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 </tbody>
 </table>
 </div>
-##Comparing Ethnicity and freedom response
-##This plot summarizes the main dependent variable which is rating of average freedom.
+<h2 id="comparing-ethnicity-and-freedom-response">Comparing Ethnicity and freedom response</h2>
+<p>##This plot summarizes the main dependent variable which is rating of average freedom.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>mean_Freedom_by_tribe</span> <span class='op'>&lt;-</span><span class='va'>selected_data1</span> <span class='op'>|&gt;</span></span>
@@ -1904,8 +1904,8 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 </tbody>
 </table>
 </div>
-<p>##Bena Tsemay and Kembata are the two tribes that report the highest average rating of freedom in the country. These two tribes are one of the smallest ethnic groups in Ethiopia. The lowest two average rating of freedom goes to the Dinka tribe and the Shinasha which are also two of the smallest ethnic groups in the country. The Dinka tribe is largely found in South Sudan and not Ethiopia. The Shinasha people are also very small in the population of Ethiopia. The Tigre are a notably sized group at around (6%) of the population and they express the 4th highest average rating of freedom.</p>
-##Calculating the average rating of freedom of speech of each tribe
+<p>Bena Tsemay and Kembata are the two tribes that report the highest average rating of freedom in the country. These two tribes are one of the smallest ethnic groups in Ethiopia. The lowest two average rating of freedom goes to the Dinka tribe and the Shinasha which are also two of the smallest ethnic groups in the country. The Dinka tribe is largely found in South Sudan and not Ethiopia. The Shinasha people are also very small in the population of Ethiopia. The Tigre are a notably sized group at around (6%) of the population and they express the 4th highest average rating of freedom.</p>
+<h2 id="calculating-the-average-rating-of-freedom-of-speech-of-each-tribe">Calculating the average rating of freedom of speech of each tribe</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>mean_Freedom_by_tribe</span> <span class='op'>|&gt;</span></span>
@@ -1933,8 +1933,8 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 10 Gumuz             3.19
 # … with 15 more rows</code></pre>
 </div>
-<h2 id="how-do-oromos-in-rural-vs-urban-communities-rate-their-freedom">How do Oromos in rural vs Urban communities rate their freedom</h2>
-##I find that Oromos who live in Rural communities rate their freedom slightly higher than Oromos who live in urban communities.
+<h2 id="how-do-oromos-in-rural-vs-urban-communities-rate-their-freedom">How do Oromos in rural vs Urban communities rate their freedom?</h2>
+<h2 id="i-find-that-oromos-who-live-in-rural-communities-rate-their-freedom-slightly-higher-than-oromos-who-live-in-urban-communities.">I find that Oromos who live in Rural communities rate their freedom slightly higher than Oromos who live in urban communities.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>oromo_urban</span> <span class='op'>&lt;-</span> <span class='va'>selected_data1</span><span class='op'>|&gt;</span></span>
@@ -1973,8 +1973,8 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 </tbody>
 </table>
 </div>
-##How do Amharas in rural communities vs urban communities rate their freedom
-##I find that Oromos who live in Rural communities rate their freedom slightly higher than Oromos who live in urban communities.
+<h2 id="how-do-amharas-in-rural-communities-vs-urban-communities-rate-their-freedom">How do Amharas in rural communities vs urban communities rate their freedom?</h2>
+<h2 id="i-find-that-amharas-who-live-in-rural-communities-rate-their-freedom-slightly-higher-than-amharas-who-live-in-urban-communities.">I find that Amharas who live in Rural communities rate their freedom slightly higher than Amharas who live in urban communities.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>amhara_urban</span> <span class='op'>&lt;-</span> <span class='va'>selected_data1</span><span class='op'>|&gt;</span></span>
@@ -2013,8 +2013,8 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 </tbody>
 </table>
 </div>
-##How do Tigres in urban vs rural communities rate their freedom of speech?
-##I find that rural Tigres have a higher rating of freedom of speech than urban Tigres.
+<h2 id="how-do-tigres-in-urban-vs-rural-communities-rate-their-freedom-of-speech">How do Tigres in urban vs rural communities rate their freedom of speech?</h2>
+<h2 id="i-find-that-rural-tigres-have-a-higher-rating-of-freedom-of-speech-than-urban-tigres.">I find that rural Tigres have a higher rating of freedom of speech than urban Tigres.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>tigre_urban</span> <span class='op'>&lt;-</span> <span class='va'>selected_data1</span><span class='op'>|&gt;</span></span>
@@ -2053,8 +2053,8 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 </tbody>
 </table>
 </div>
-##How do Somalis in urban vs rural communities rate their freedom of speech?
-##I find that rural somalis rate their freedom of speech higher than urban somalis.
+<h2 id="how-do-somalis-in-urban-vs-rural-communities-rate-their-freedom-of-speech">How do Somalis in urban vs rural communities rate their freedom of speech?</h2>
+<h2 id="i-find-that-rural-somalis-rate-their-freedom-of-speech-higher-than-urban-somalis.">I find that rural somalis rate their freedom of speech higher than urban somalis.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>somali_urban</span> <span class='op'>&lt;-</span> <span class='va'>selected_data1</span><span class='op'>|&gt;</span></span>
@@ -2093,8 +2093,8 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 </tbody>
 </table>
 </div>
-<p>##Overall, from the 4 major tribes I looked at, it looks like individuals who rated higher levels of freedom of speech were in rural communities in comparison to those in urban communities.</p>
-##Age count of ethiopians
+<h2 id="overall-from-the-4-major-tribes-i-looked-at-it-looks-like-individuals-who-rated-higher-levels-of-freedom-of-speech-were-in-rural-communities-in-comparison-to-those-in-urban-communities.">Overall, from the 4 major tribes I looked at, it looks like individuals who rated higher levels of freedom of speech were in rural communities in comparison to those in urban communities.</h2>
+<h2 id="age-count-of-ethiopians">Age count of ethiopians</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>agecount</span> <span class='op'>&lt;-</span> <span class='va'>selected_data1</span> <span class='op'>|&gt;</span></span>
@@ -2117,7 +2117,7 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 10 27           65
 # … with 57 more rows</code></pre>
 </div>
-<h2 id="how-does-the-average-rating-of-freedom-of-speech-vary-across-age">How does the average rating of freedom of speech vary across age</h2>
+<h2 id="how-does-the-average-rating-of-freedom-of-speech-vary-across-age">How does the average rating of freedom of speech vary across age?</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>age_rating</span> <span class='op'>&lt;-</span> <span class='va'>selected_data1</span> <span class='op'>|&gt;</span></span>
@@ -2140,8 +2140,8 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 10 27                                         3.26
 # … with 57 more rows</code></pre>
 </div>
-##Grouping age groups by every 10 years and seeing how their ratings of freedom of speech vary
-##It appears that the older age groups tend to have higher average ratings of freedom of speech than younger age groups.
+<h2 id="grouping-age-groups-by-every-10-years-and-seeing-how-their-ratings-of-freedom-of-speech-vary">Grouping age groups by every 10 years and seeing how their ratings of freedom of speech vary</h2>
+<h2 id="it-appears-that-the-older-age-groups-tend-to-have-higher-average-ratings-of-freedom-of-speech-than-younger-age-groups.">It appears that the older age groups tend to have higher average ratings of freedom of speech than younger age groups.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>age_effect</span> <span class='op'>&lt;-</span><span class='va'>selected_data1</span> <span class='op'>|&gt;</span></span>
@@ -2157,7 +2157,7 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 <p><img src="index_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
 </div>
 <h2 id="what-is-the-average-rating-of-freedom-of-speech-when-an-individuals-home-language-is-the-same-as-the-language-used-in-the-interview">What is the average rating of freedom of speech when an individual’s home language is the same as the language used in the interview?</h2>
-##It appears that the average rating of freedom of speech is higher (3.18) when the home language of the respondent does not match the language used in the interview than the average rating of freedom of speech when the home language and the interview language was the same (3.08). It also appears those who are rural appear to rate their freedom of speech higher than those who are urban. This has found to be true to other analysis done above as well.
+<h2 id="it-appears-that-the-average-rating-of-freedom-of-speech-is-higher-3.18-when-the-home-language-of-the-respondent-does-not-match-the-language-used-in-the-interview-than-the-average-rating-of-freedom-of-speech-when-the-home-language-and-the-interview-language-was-the-same-3.08.-it-also-appears-those-who-are-rural-appear-to-rate-their-freedom-of-speech-higher-than-those-who-are-urban.-this-has-found-to-be-true-to-other-analysis-done-above-as-well.">It appears that the average rating of freedom of speech is higher (3.18) when the home language of the respondent does not match the language used in the interview than the average rating of freedom of speech when the home language and the interview language was the same (3.08). It also appears those who are rural appear to rate their freedom of speech higher than those who are urban. This has found to be true to other analysis done above as well.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>language__match</span> <span class='op'>&lt;-</span> <span class='va'>selected_data1</span> <span class='op'>|&gt;</span></span>
@@ -2245,7 +2245,7 @@ The Oromo ethnic group appears to be the largest followed by Amhara.
 </div>
 <p>SECTION ON REGRESSION</p>
 <h2 id="how-does-gender-affect-the-rating-of-freedom">How does gender affect the rating of freedom?</h2>
-##Gender appears to be statistically insignificant on the rating of freedom of Ethiopians.
+<h2 id="gender-appears-to-be-statistically-insignificant-on-the-rating-of-freedom-of-ethiopians.">Gender appears to be statistically insignificant on the rating of freedom of Ethiopians.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Freedom</span> <span class='op'>~</span> <span class='va'>gender</span>, data <span class='op'>=</span> <span class='va'>selected_data1</span><span class='op'>)</span></span>
@@ -2270,8 +2270,8 @@ Residual standard error: 1.03 on 2182 degrees of freedom
 Multiple R-squared:  6.3e-05,   Adjusted R-squared:  -0.0003953 
 F-statistic: 0.1375 on 1 and 2182 DF,  p-value: 0.7108</code></pre>
 </div>
-<h2 id="how-does-the-average-rating-of-freedom-compare-when-you-account-for-age">How does the average rating of freedom compare when you account for age</h2>
-##Age appears very statistically significant when it comes to the way Ethiopians rate their freedom of speech.
+<h2 id="how-does-the-average-rating-of-freedom-compare-when-you-account-for-age">How does the average rating of freedom compare when you account for age?</h2>
+<h2 id="age-appears-very-statistically-significant-when-it-comes-to-the-way-ethiopians-rate-their-freedom-of-speech.">Age appears very statistically significant when it comes to the way Ethiopians rate their freedom of speech.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Freedom</span> <span class='op'>~</span> <span class='va'>Age</span>, data <span class='op'>=</span> <span class='va'>selected_data1</span><span class='op'>)</span></span>
@@ -2297,7 +2297,7 @@ Multiple R-squared:  0.005211,  Adjusted R-squared:  0.004755
 F-statistic: 11.43 on 1 and 2182 DF,  p-value: 0.0007355</code></pre>
 </div>
 <h2 id="how-does-the-rating-of-freedom-compare-when-you-account-for-age-and-gender-and-urbanrural">How does the rating of freedom compare when you account for age and gender and urban/rural?</h2>
-##Age appears statistically significant again even when you hold for gender and if the respondent lives in rural or urban areas.
+<h2 id="age-appears-statistically-significant-again-even-when-you-hold-for-gender-and-if-the-respondent-lives-in-rural-or-urban-areas.">Age appears statistically significant again even when you hold for gender and if the respondent lives in rural or urban areas.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Freedom</span> <span class='op'>~</span> <span class='va'>Age</span> <span class='op'>+</span> <span class='va'>gender</span> <span class='op'>+</span> <span class='va'>Urban</span>, data <span class='op'>=</span> <span class='va'>selected_data1</span><span class='op'>)</span></span>
@@ -2324,8 +2324,8 @@ Residual standard error: 1.027 on 2180 degrees of freedom
 Multiple R-squared:  0.007061,  Adjusted R-squared:  0.005695 
 F-statistic: 5.168 on 3 and 2180 DF,  p-value: 0.001469</code></pre>
 </div>
-<h2 id="how-does-the-rating-of-freedom-compare-when-you-account-for-tribes.">How does the rating of freedom compare when you account for tribes.</h2>
-##Most tribes don’t appear to have any statistical signficance when it comes to how individuals rate their freedom of speech.
+<h2 id="how-does-the-rating-of-freedom-compare-when-you-account-for-tribes">How does the rating of freedom compare when you account for tribes?</h2>
+<h2 id="most-tribes-dont-appear-to-have-any-statistical-signficance-when-it-comes-to-how-individuals-rate-their-freedom-of-speech.">Most tribes don’t appear to have any statistical signficance when it comes to how individuals rate their freedom of speech.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Freedom</span> <span class='op'>~</span> <span class='va'>tribe</span>, data <span class='op'>=</span> <span class='va'>selected_data1</span><span class='op'>)</span></span>
@@ -2399,9 +2399,9 @@ F-statistic: 2.838 on 24 and 2159 DF,  p-value: 5.36e-06</code></pre>
 #   gender &lt;chr&gt;, age_group &lt;chr&gt;, and abbreviated variable name
 #   ¹​Home_Language</code></pre>
 </div>
-MAIN REGRESSION
-## How does only focusing on the 4 major ethnic groups/tribes affect the level of freedom of speech?
-##Individuals who are from either the Somali tribe or Tigre tribe hold statistical signficance. Somalis feel less freedom of speech than Amharas (reference group) and the Tigres feel more freedom of speech than the Amharas. Oromos feel less freedom of speech than Amharas but it is not statistically significant enough.
+<h2 id="main-regression">MAIN REGRESSION</h2>
+<h2 id="how-does-only-focusing-on-the-4-major-ethnic-groupstribes-affect-the-level-of-freedom-of-speech">How does only focusing on the 4 major ethnic groups/tribes affect the level of freedom of speech?</h2>
+<h2 id="individuals-who-are-from-either-the-somali-tribe-or-tigre-tribe-hold-statistical-signficance.-somalis-feel-less-freedom-of-speech-than-amharas-reference-group-and-the-tigres-feel-more-freedom-of-speech-than-the-amharas.-oromos-feel-less-freedom-of-speech-than-amharas-but-it-is-not-statistically-significant-enough.">Individuals who are from either the Somali tribe or Tigre tribe hold statistical signficance. Somalis feel less freedom of speech than Amharas (reference group) and the Tigres feel more freedom of speech than the Amharas. Oromos feel less freedom of speech than Amharas but it is not statistically significant enough.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>test_subset_fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Freedom</span> <span class='op'>~</span> <span class='va'>tribe</span>, data <span class='op'>=</span> <span class='va'>subset_final_data</span><span class='op'>)</span></span>
@@ -2428,9 +2428,9 @@ Residual standard error: 1.049 on 1657 degrees of freedom
 Multiple R-squared:  0.01436,   Adjusted R-squared:  0.01257 
 F-statistic: 8.046 on 3 and 1657 DF,  p-value: 2.533e-05</code></pre>
 </div>
-<p>MAIN MULTIPLE REGRESSION</p>
+<h1 id="main-multiple-regression">MAIN MULTIPLE REGRESSION</h1>
 <h2 id="how-does-the-4-major-ethnic-groupstribes-while-holding-for-urbanrural-age-affect-the-level-of-freedom-of-speech">How does the 4 major ethnic groups/tribes, while holding for urban/rural &amp; age affect the level of freedom of speech?</h2>
-##Amhara is the reference group so when you examine Urban1 it shows that whether someone is Urban or Rural does not hold significance. Oromos appear to feel that they have less freedom of speech than Amharas but it is not statistically significant. Somalis appear to feel that they also feel less freedom of speech than Amharas and it is statistically significant. Tigres feel that they have more freedom of speech than Amharas and it is statistically signficant. It also appears that if there was neither urban/rural/, age or tribe, that the freedom level would be around 2.99 and it appears to be very statistically significant. Overall, based on the history of Ethiopia, I find that this survey conducted by Afrobameter appears to be done well and is reflected on the country. An important thing to note is that the r^2 and adjusted r^2 are low values which shows that model could be improved but due to time constraints/limitations, there are more variables that could bring a better fit for the model.
+<h2 id="amhara-is-the-reference-group-so-when-you-examine-urban1-it-shows-that-whether-someone-is-urban-or-rural-does-not-hold-significance.-oromos-appear-to-feel-that-they-have-less-freedom-of-speech-than-amharas-but-it-is-not-statistically-significant.-somalis-appear-to-feel-that-they-also-feel-less-freedom-of-speech-than-amharas-and-it-is-statistically-significant.-tigres-feel-that-they-have-more-freedom-of-speech-than-amharas-and-it-is-statistically-signficant.-it-also-appears-that-if-there-was-neither-urbanrural-age-or-tribe-that-the-freedom-level-would-be-around-2.99-and-it-appears-to-be-very-statistically-significant.-overall-based-on-the-history-of-ethiopia-i-find-that-this-survey-conducted-by-afrobameter-appears-to-be-done-well-and-is-reflected-on-the-country.-an-important-thing-to-note-is-that-the-r2-and-adjusted-r2-are-low-values-which-shows-that-model-could-be-improved-but-due-to-time-constraintslimitations-there-are-more-variables-that-could-bring-a-better-fit-for-the-model.">Amhara is the reference group so when you examine Urban1 it shows that whether someone is Urban or Rural does not hold significance. Oromos appear to feel that they have less freedom of speech than Amharas but it is not statistically significant. Somalis appear to feel that they also feel less freedom of speech than Amharas and it is statistically significant. Tigres feel that they have more freedom of speech than Amharas and it is statistically signficant. It also appears that if there was neither urban/rural/, age or tribe, that the freedom level would be around 2.99 and it appears to be very statistically significant. Overall, based on the history of Ethiopia, I find that this survey conducted by Afrobameter appears to be done well and is reflected on the country. An important thing to note is that the r^2 and adjusted r^2 are low values which shows that model could be improved but due to time constraints/limitations, there are more variables that could bring a better fit for the model.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>test_subset_fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>Freedom</span> <span class='op'>~</span> <span class='va'>Urban</span> <span class='op'>+</span> <span class='va'>Age</span> <span class='op'>+</span> <span class='va'>tribe</span>, data <span class='op'>=</span> <span class='va'>subset_final_data</span><span class='op'>)</span></span>
@@ -2459,8 +2459,8 @@ Residual standard error: 1.047 on 1655 degrees of freedom
 Multiple R-squared:  0.01954,   Adjusted R-squared:  0.01658 
 F-statistic: 6.597 on 5 and 1655 DF,  p-value: 4.338e-06</code></pre>
 </div>
-##How does factoring for Urban/Rurual, Age and Tribe affect each individuals rating of their freedom of speech?
-##Age appears to be statistically significant when one holds for urban or rural and when one holds for tribe.
+<h2 id="how-does-factoring-for-urbanrurual-age-and-tribe-affect-each-individuals-rating-of-their-freedom-of-speech">How does factoring for Urban/Rurual, Age and Tribe affect each individuals rating of their freedom of speech?</h2>
+<h2 id="age-appears-to-be-statistically-significant-when-one-holds-for-urban-or-rural-and-when-one-holds-for-tribe.">Age appears to be statistically significant when one holds for urban or rural and when one holds for tribe.</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>test_fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span> <span class='op'>(</span><span class='va'>Freedom</span> <span class='op'>~</span> <span class='va'>Urban</span> <span class='op'>+</span> <span class='va'>Age</span> <span class='op'>+</span> <span class='va'>tribe</span>, data <span class='op'>=</span> <span class='va'>selected_data1</span><span class='op'>)</span></span>
@@ -2511,7 +2511,7 @@ Multiple R-squared:  0.03613,   Adjusted R-squared:  0.02452
 F-statistic:  3.11 on 26 and 2157 DF,  p-value: 2.231e-07</code></pre>
 </div>
 <h2 id="conclusion">Conclusion</h2>
-<p>##It appears age plays a statistically signficant role in how individuals rate their level of freedom of speech. Also when one focuses on the four major tribes we see the effect that the four major tribes actually have. With both Somali tribe and Tigre tribe having statistically significance. With somali’s feeling less freedom of speech levels than Amharas which were the reference groups and Tigres feeling more freedom of speech levels than Amharas. Additionally, urban or rural classification no longer seemed to play a role in the ratings of level of freedom of speech once put into the regression line. Due to the nature of the research design being cross-sectional, the coeffcient does not represent a causal effect. Additionally, some limitations of this project was that there was a long list of questions that were asked and so I could only select a few factors that I thought could be important in how Ethiopians view their freedom of speech levels however the low Adjusted R-squared values indicat that there is more going on here and that the few variables that I selected are not showing the entire picture. I think a way to improve this study in the future is through finding way to improve the respondents likelihood of responding truthfully. Overall, I found that this project displayed an accurate representation of the levels of freedom of speech tribes state that they experience.</p>
+<h2 id="it-appears-age-plays-a-statistically-signficant-role-in-how-individuals-rate-their-level-of-freedom-of-speech.-also-when-one-focuses-on-the-four-major-tribes-we-see-the-effect-that-the-four-major-tribes-actually-have.-with-both-somali-tribe-and-tigre-tribe-having-statistically-significance.-with-somalis-feeling-less-freedom-of-speech-levels-than-amharas-which-were-the-reference-groups-and-tigres-feeling-more-freedom-of-speech-levels-than-amharas.-additionally-urban-or-rural-classification-no-longer-seemed-to-play-a-role-in-the-ratings-of-level-of-freedom-of-speech-once-put-into-the-regression-line.-due-to-the-nature-of-the-research-design-being-cross-sectional-the-coeffcient-does-not-represent-a-causal-effect.-additionally-some-limitations-of-this-project-was-that-there-was-a-long-list-of-questions-that-were-asked-and-so-i-could-only-select-a-few-factors-that-i-thought-could-be-important-in-how-ethiopians-view-their-freedom-of-speech-levels-however-the-low-adjusted-r-squared-values-indicat-that-there-is-more-going-on-here-and-that-the-few-variables-that-i-selected-are-not-showing-the-entire-picture.-i-think-a-way-to-improve-this-study-in-the-future-is-through-finding-way-to-improve-the-respondents-likelihood-of-responding-truthfully.-overall-i-found-that-this-project-displayed-an-accurate-representation-of-the-levels-of-freedom-of-speech-tribes-state-that-they-experience.">It appears age plays a statistically signficant role in how individuals rate their level of freedom of speech. Also when one focuses on the four major tribes we see the effect that the four major tribes actually have. With both Somali tribe and Tigre tribe having statistically significance. With somali’s feeling less freedom of speech levels than Amharas which were the reference groups and Tigres feeling more freedom of speech levels than Amharas. Additionally, urban or rural classification no longer seemed to play a role in the ratings of level of freedom of speech once put into the regression line. Due to the nature of the research design being cross-sectional, the coeffcient does not represent a causal effect. Additionally, some limitations of this project was that there was a long list of questions that were asked and so I could only select a few factors that I thought could be important in how Ethiopians view their freedom of speech levels however the low Adjusted R-squared values indicat that there is more going on here and that the few variables that I selected are not showing the entire picture. I think a way to improve this study in the future is through finding way to improve the respondents likelihood of responding truthfully. Overall, I found that this project displayed an accurate representation of the levels of freedom of speech tribes state that they experience.</h2>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

@@ -1,7 +1,7 @@
 ---
 title: "Ethiopia"
 author: "Tsiyon Geremew"
-description: ""
+description: "Attitudes on levels of Freedom of Speech in Ethiopia"
 output:
   distill::distill_article:
     self_contained: false
@@ -9,17 +9,9 @@ output:
 
 ## Milestone 2 
 
+Do factors like ethnicity, gender, urban or rural classification, age, or more affect whether Ethiopians feel that they have freedom of speech? Ethiopia is considered a federal parliamentary republic (Federal Democratic Republic of Ethiopia). However do individuals who live in Ethiopia find this to be true? Ethiopia is a country that is widely known for a few major events. Ethiopia is one of the only countries to have never been colonized so they aren’t like other African countries who had to experience the fight for freedom from colonial powers (except their two encounters with Italy). Ethiopia however struggles with issues such as ethnic tensions and the overall governments effectiveness. So how do Ethiopians view their freedom of speech? Ethiopia is widely diverse with over 90 different ethnic groups and around 80 languages. Often these tribes vary on how they view the level of freedom they have in Ethiopia. With the recent news of ethnic troubles in different ethnic regions ranging from the Tigray region to the Oromia region, I wonder how these tribes vary in their view of how much freedom of speech they have. I also wonder how other factors such as age, urban/rural, or gender affect these ratings of freedom individuals say they have. The data I am sourcing from is the Afrobarometer 2020 Ethiopian Survey. My hypothesis is that those who are younger, from ethnic groups that are in power during 2020 (Oromos and Amharas), and male will be more likely to say that they have political freedom in the country. I predict that when accounting for gender, ethnicity will not hold as great as an effect on the rating of freedom but I predict that when account for age and gender, ethnicity will hold as great as an effect on the rating of freedom as if one was not account for multiple factors.
 
-Does factors like ethnicity, gender or age affect whether Ethiopians feel that they have the freedom of speech? Ethiopia is considered a federal
-parliamentary republic (Federal Democratic Republic of Ethiopia).My data will be coming from Afrobarometer 2020 Ethiopian Survey. 
-I am interested in examining how explanatory variables such as ethnicity, gender and age affects political attitudes in Ethiopia. 
-Ethnicity will be measured by number. 
-1340 = "Oromo", 1341 = Amhara, 1342 = Somali, 1343 = Tigre, 1344 = Sidama, 1345 = Guragie and so on for the ethnic groups. 
-Gender would be coded as 2 = "Female", 1 = "Male." Age is coded simply by the number of the age of the respondents. 
-Freedom will be coded on a 1-4 point scale as 1 = Not free at all, 2 = Not very free, 3 = Somewhat free, 4 = Completely free. 
-This is based off of 2020 survey. My hypothesis is that those who are younger, from ethnic groups that are in power during 2020 (Oromos and Amharas), and male will be more likely to say that they have political freedom in the country. 
-If I observe that groups such as young males who Oromos and Amharas say that they have a higher rating of freedom, then my hypothesis will be supported. 
-If older females from other ethnic groups such as the Tigres say that they have a higher rating of freedom in the country then my hypothesis will be disproved. 
+The dependent variable is the average rating of Freedom of speech in Ethiopia was caclulated from a question asked in the Afrobarometer question which conducted a 1-4 point scale. 1 meant not at all free, 2 meant not very free, 3 meant somewhat free, 4 meant completely free. The Afrobarometer conducted surverys on Ethiopians across the country from urban to rural areas. The type of research design I am doing is cross-sectional as I am looking at how different factors like ethnicity/tribe, gender, urban or rural classification, age and so on affect Ethiopians rating of freedom of speech. My main independent/explanatory variable is tribes as I look at all the tribes listed in the survey and I also focus on the four main tribes of Ethiopia as well. 
 
 https://www.afrobarometer.org/wp-content/uploads/2022/02/eth_r8.codebook_27may21.final_.pdf
 https://www.afrobarometer.org/survey-resource/ethiopia-round-8-dataset-2020/
@@ -40,28 +32,71 @@ data1
 
 ```{r}
 selected_data1 <- data1 |>
-  select(RESPNO, Q10A,REGION, Q101, Q81, Q2, Q1) |>
-  rename( "Freedom"= "Q10A", "Gender" = "Q101", "Tribe" = "Q81", "Age" = "Q1", "Home_Language" = "Q2") |>
-  mutate(gender = if_else(Gender == 1, "Male", "Female"), tribe = case_when(Tribe == 1340 ~ "Oromo",Tribe == 1341 ~ "Amhara", 
-                                                                            Tribe == 1342 ~ "Somali", Tribe == 1343 ~"Tigre", 
-                                                                            Tribe == 1344 ~ "Sidama", Tribe == 1345 ~ "Guragie", 
-                                                                            Tribe == 1346 ~ "Silte", Tribe == 1347 ~ "Welayta", 
-                                                                            Tribe == 1348 ~ "Hadiya", Tribe == 1349 ~"Kembata", 
-                                                                            Tribe == 1350 ~ "Gedeo", Tribe == 1351 ~ "Gamo", 
-                                                                            Tribe == 1352 ~ "Kaffa", Tribe == 1354 ~ "Harari",
-                                                                            Tribe == 1355 ~ "Agnawak", Tribe == 1356 ~ "Nuer", 
-                                                                            Tribe == 1357 ~ "Dinka", Tribe == 1358 ~ "MeJenge", 
-                                                                            Tribe == 1359 ~ "Shinasha", Tribe == 1360 ~ "Berta", 
-                                                                            Tribe == 1361 ~ "Agew", Tribe == 1362 ~ "Ari", 
-                                                                            Tribe == 1363 ~ "Bena Tsemay", Tribe == 1364 ~ "Bench", 
-                                                                            Tribe == 1365 ~ "Gofa", Tribe == 1366 ~ "Gumuz", 
-                                                                            Tribe == 1367 ~ "Koore", Tribe == 9990 ~ "Ethiopian",
-                                                                            Tribe == 9998 ~ "Refused")) |>
+  select(RESPNO, Q10A,REGION, Q101, Q81, Q2, Q1, URBRUR, Q82C, Q82D, Q103, Q84C) |>
+  rename( "Freedom"= "Q10A", "Gender" = "Q101", "Tribe" = "Q81", "Age" = "Q1", "Home_Language" = "Q2","Urban" = "URBRUR", "MTongueComfort" = "Q82C", "CulturalComfort" = "Q82D", "Interview_Language" = "Q103", "ethnic_discrimination" = "Q84C") |>
+  
+  mutate(Urban = case_when (Urban == 1 ~ "1", Urban == 2 ~ "0"),
+         MotherTongue = if_else (MTongueComfort == 1, "Yes", "No"), 
+         CulturalComfort = if_else (CulturalComfort == 1, "Yes", "No"),
+         tribe = case_when(Tribe == 1340 ~ "Oromo",Tribe == 1341 ~ "Amhara", 
+                           Tribe == 1342 ~ "Somali", Tribe == 1343 ~"Tigre", 
+                           Tribe == 1344 ~ "Sidama", Tribe == 1345 ~ "Guragie", 
+                           Tribe == 1346 ~ "Silte", Tribe == 1347 ~ "Welayta", 
+                           Tribe == 1348 ~ "Hadiya", Tribe == 1349 ~"Kembata", 
+                           Tribe == 1350 ~ "Gedeo", Tribe == 1351 ~ "Gamo", 
+                           Tribe == 1352 ~ "Kaffa", Tribe == 1354 ~ "Harari",
+                           Tribe == 1355 ~ "Agnawak", Tribe == 1356 ~ "Nuer", 
+                           Tribe == 1357 ~ "Dinka", Tribe == 1358 ~ "MeJenge", 
+                           Tribe == 1359 ~ "Shinasha", Tribe == 1360 ~ "Berta", 
+                           Tribe == 1361 ~ "Agew", Tribe == 1362 ~ "Ari", 
+                           Tribe == 1363 ~ "Bena Tsemay", Tribe == 1364 ~"Bench", 
+                           Tribe == 1365 ~ "Gofa", Tribe == 1366 ~ "Gumuz", 
+                           Tribe == 1367 ~ "Koore", Tribe == 9990 ~ "Ethiopian",
+                           Tribe == 9998 ~ "Refused"),
+         gender = case_when(Gender == 1 ~ "0", Gender == 2 ~ "1"),
+         
+         Home_Language = case_when(Home_Language == 1340 ~ "Oromiffa", Home_Language == 1341 ~ "Amharic", 
+                                   Home_Language == 1342 ~ "Somaligna", Home_Language == 1343 ~"Tigrigna", 
+                                   Home_Language == 1344 ~ "Sidamigna", Home_Language == 1345 ~ "Guragigna", 
+                                   Home_Language == 1346 ~ "Silte", Home_Language == 1347 ~ "Welayitigna", 
+                                   Home_Language == 1348 ~ "Hadiyagna", Home_Language == 1349 ~"Kembatigna", 
+                                   Home_Language == 1350 ~ "Gedogna", Home_Language == 1351 ~ "Gamogna", 
+                                   Home_Language == 1352 ~ "Kafficho", Home_Language == 1353 ~ "Afarigna" ,
+                                   Home_Language == 1354 ~ "Adergigna (Harari)",
+                                   Home_Language == 1355 ~ "Agnawakigna", Home_Language == 1356 ~ "Nuerigna", 
+                                   Home_Language == 1357 ~ "Dinkagna", Home_Language == 1358 ~ "Mejengegna", 
+                                   Home_Language == 1359 ~ "Shinashigna", Home_Language == 1360 ~ "Bertagan", 
+                                   Home_Language == 1363 ~ "Agewigna", Home_Language == 1362 ~ "Bench", 
+                                   Home_Language == 1361 ~ "Gumuz"),
+         
+         
+         Interview_Language = case_when(Interview_Language == 1 ~ "English", Interview_Language == 1340 ~ "Oromiffa", 
+                                        Interview_Language == 1341 ~ "Amharic", Interview_Language == 1342 ~ "Somaligna", 
+                                        Interview_Language == 1343 ~ "Tigrigna"),
+         
+         age_group = case_when(Age >= 18 & Age <= 28  ~ "Age: 18-28",
+                        Age >= 28 & Age <= 38 ~ "Age: 28-38",
+                        Age >= 38 & Age <= 48 ~ "Age: 38-48",
+                        Age >= 48 & Age <= 58 ~ "Age: 48-58",
+                        Age >= 58 & Age <= 68 ~ "Age: 58-68",
+                        Age >= 68 & Age <= 78 ~ "Age: 68-78",
+                        Age >= 78 & Age <= 88 ~ "Age: 78-88",
+                        Age >= 88 & Age <= 98 ~ "Age: 88-98"),
+         ethnic_discrimination = case_when (ethnic_discrimination == 0 ~ "No", 
+                                            ethnic_discrimination == 1 ~ "Yes", 
+                                            ethnic_discrimination == 2 ~ "Yes",
+                                            ethnic_discrimination == 3 ~ "Yes",
+                                            ethnic_discrimination == -1 ~ "NA",
+                                            ethnic_discrimination == 8 ~ "NA",
+                                            ethnic_discrimination == 9 ~ "NA"))|>
   drop_na()
 
-selected_data1
+selected_data1 |>
+  select(Freedom, REGION, Age, gender,tribe, Home_Language, Urban, MTongueComfort, CulturalComfort, Interview_Language, age_group, ethnic_discrimination)
 
 ```
+
+
 The Oromo ethnic group appears to be the largest followed by Amhara.
 ```{r}
 tribecount<- selected_data1 |>
@@ -71,28 +106,232 @@ tribecount<- selected_data1 |>
 tribecount
 
 
-knitr::kable(gendercount)
+tribecount <- selected_data1 |>
+  group_by(tribe) |>
+  summarize(count = n())
+
+knitr:: kable(tribecount)
+
 
 ```
 
 ##Comparing Ethnicity and freedom response
-
+This plot summarizes the main dependent variable which is rating of average freedom.
 ```{r}
 mean_Freedom_by_tribe <-selected_data1 |>
   group_by(tribe)|>
   summarize(mean_Freedom = mean(Freedom))
 mean_Freedom_by_tribe
 
+
 knitr::kable(mean_Freedom_by_tribe, col.names = c("Tribe", "Average Rating of Freedom"))
 ```
 Bena Tsemay and Kembata are the two tribes that report the highest average rating of freedom in the country. These two tribes are one of the smallest ethnic groups in Ethiopia. The lowest two average rating of freedom goes to the Dinka tribe and the Shinasha which are also two of the smallest ethnic groups in the country. The Dinka tribe is largely found in South Sudan and not Ethiopia. The Shinasha people are also very small in the population of Ethiopia. The Tigre are a notably sized group at around (6%) of the population and they express the 4th highest average rating of freedom. 
+
+##Calculating the average rating of freedom of speech of each tribe
 ```{r}
 mean_Freedom_by_tribe |>
   ggplot(aes(x = tribe, y = mean_Freedom)) +
   guides(x = guide_axis(angle = 90)) +
   labs (x = "Tribe", y = "Average Rating of Freedom") +
   geom_point()
+mean_Freedom_by_tribe
+```
+## How do Oromos in rural vs Urban communities rate their freedom
+I find that Oromos who live in Rural communities rate their freedom slightly higher than Oromos who live in urban communities.
+```{r}
+oromo_urban <- selected_data1|>
+  filter(tribe == "Oromo", Urban == 1) |>
+  summarize(mean(Freedom))
+knitr::kable(oromo_urban, col.names = "Average Rating of Freedom for Urban Oromos")
+ 
+oromo_rural <- selected_data1|>
+  filter(tribe == "Oromo", Urban == 0) |>
+  summarize(mean(Freedom))
+knitr::kable(oromo_rural, col.names = "Average Rating of Freedom for Rural Oromos")
+```
+
+##How do Amharas in rural communities vs urban communities rate their freedom
+I find that Oromos who live in Rural communities rate their freedom slightly higher than Oromos who live in urban communities.
+```{r}
+amhara_urban <- selected_data1|>
+  filter(tribe == "Amhara", Urban == 1) |>
+  summarize(mean(Freedom))
+knitr::kable(amhara_urban, col.names = "Average Rating of Freedom for Urban Amharas")
+ 
+amhara_rural <- selected_data1|>
+  filter(tribe == "Amhara", Urban == 0) |>
+  summarize(mean(Freedom))
+knitr::kable(amhara_rural, col.names = "Average Rating of Freedom for Rural Amharas")
+```
+
+##How do Tigres in urban vs rural communities rate their freedom of speech?
+I find that rural Tigres have a higher rating of freedom of speech than urban Tigres.
+```{r}
+tigre_urban <- selected_data1|>
+  filter(tribe == "Tigre", Urban == 1) |>
+  summarize(mean(Freedom))
+knitr::kable(tigre_urban, col.names = "Average Rating of Freedom for Urban Tigres")
+ 
+tigre_rural <- selected_data1|>
+  filter(tribe == "Tigre", Urban == 0) |>
+  summarize(mean(Freedom))
+knitr::kable(tigre_rural, col.names = "Average Rating of Freedom for Rural Tigres")
+```
+
+##How do Somalis in urban vs rural communities rate their freedom of speech?
+I find that rural somalis rate their freedom of speech higher than urban somalis.
+```{r}
+somali_urban <- selected_data1|>
+  filter(tribe == "Somali", Urban == 1) |>
+  summarize(mean(Freedom))
+knitr::kable(somali_urban, col.names = "Average Rating of Freedom for Urban Somalis")
+ 
+somali_rural <- selected_data1|>
+  filter(tribe == "Somali", Urban == 0) |>
+  summarize(mean(Freedom))
+knitr::kable(somali_rural, col.names = "Average Rating of Freedom for Rural Somalis")
+```
+
+Overall, from the 4 major tribes I looked at, it looks like individuals who rated higher levels of freedom of speech were in rural communities in comparison to those in urban communities.
+
+
+##Age count of ethiopians
+```{r}
+agecount <- selected_data1 |>
+  group_by(Age) |>
+  summarize(count = n())
+agecount
+```
+
+## How does the average rating of freedom of speech vary across age
+```{r}
+age_rating <- selected_data1 |>
+  group_by(Age) |>
+  summarize("Average Rating of Freedom of Speech" = mean(Freedom))
+age_rating
+```
+
+
+##Grouping age groups by every 10 years and seeing how their ratings of freedom of speech vary
+It appears that the older age groups tend to have higher average ratings of freedom of speech than younger age groups.
+```{r}
+age_effect <-selected_data1 |>
+  group_by(age_group)|>
+  summarize(mean_freedom= mean(Freedom, na.rm = TRUE)) |>
+  ggplot(mapping = aes (x = age_group, y = mean_freedom, na.rm = TRUE)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(x = "Age Groups", y = "Average Rating of Freedom of Speech", title = "Average Rating of Freedom of Speech across Age Groups" ) +
+  scale_x_discrete(guide = guide_axis(n.dodge=2))
+age_effect
+
+```
+
+## What is the average rating of freedom of speech when an individual's home language is the same as the language used in the interview?
+It appears that the average rating of freedom of speech is higher (3.18) when the home language of the respondent does not match the language used in the interview than the average rating of freedom of speech when the home language and the interview language was the same (3.08). It also appears those who are rural appear to rate their freedom of speech higher than those who are urban. This has found to be true to other analysis done above as well. 
+```{r}
+language__match <- selected_data1 |>
+  mutate(languagematch = if_else(Home_Language == Interview_Language, "1", "0", missing = NULL))
+language__match
+
+language_match <- language__match |>
+  filter(languagematch == 1)|>
+  summarize("average rating of freedom when languages did match" = mean(Freedom)) 
+language_match
+
+language_match <- language__match |>
+  filter(languagematch == 0)|>
+  summarize("average rating of freedom when languages didnt match" = mean(Freedom)) 
+language_match
+
+language_match_urban <- language__match |>
+  filter(languagematch == 1, Urban == "Urban")|>
+  summarize("average rating of freedom when languages did match and urban" = mean(Freedom)) 
+language_match_urban
+
+language_nomatch_urban <- language__match |>
+  filter(languagematch == 0, Urban == "Urban")|>
+  summarize("average rating of freedom when languages did not match and urban" = mean(Freedom)) 
+language_nomatch_urban
+
+language_match_rural <- language__match |>
+  filter(languagematch == 1, Urban == "Rural")|>
+  summarize("average rating of freedom when languages did match and rural" = mean(Freedom)) 
+language_match_rural
+
+language_nomatch_rural <- language__match |>
+  filter(languagematch == 0, Urban == "Rural")|>
+  summarize("average rating of freedom when languages did not match and rural" = mean(Freedom)) 
+language_nomatch_rural
+
+```
+
+SECTION ON REGRESSION
+
+## How does gender affect the rating of freedom?
+Gender appears to be statistically insignificant on the rating of freedom of Ethiopians.
+```{r}
+fit <- lm(Freedom ~ gender, data = final_data)
+  summary(fit)
+
+```
+
+
+## How does the average rating of freedom compare when you account for age
+ Age appears very statistically significant when it comes to the way Ethiopians rate their freedom of speech.
+```{r}
+fit_1 <- lm(Freedom ~ Age, data = final_data)
+  summary(fit_1)
+```
+
+
+## How does the rating of freedom compare when you account for age and gender and urban/rural?
+Age appears statistically significant again even when you hold for gender and if the respondent lives in rural or urban areas.
+```{r}
+fit_2 <- lm(Freedom ~ Age + gender + Urban, data = final_data)
+  summary(fit_2)
+```
+
+## How does the rating of freedom compare when you account for tribes.
+Most tribes don't appear to have any statistical signficance when it comes to how individuals rate their freedom of speech.
+```{r}
+fit_3 <- lm(Freedom ~ tribe, data = final_data)
+  summary(fit_3)
+```
+
+## Subsetting for the 4 major ethnic groups
+```{r}
+subset_final_data <- final_data |>
+  filter(tribe %in% c("Amhara", "Oromo", "Tigre", "Somali"))
+subset_final_data
 ```
 
 
 
+MAIN REGRESSION 
+## How does only focusing on the 4 major ethnic groups/tribes affect the level of freedom of speech?
+Individuals who are from either the Somali tribe or Tigre tribe hold statistical signficance. Somalis feel less freedom of speech than Amharas (reference group) and the Tigres feel more freedom of speech than the Amharas. Oromos feel less freedom of speech than Amharas but it is not statistically significant enough.
+```{r}
+test_subset_fit <- lm(Freedom ~ tribe, data = subset_final_data)
+  summary(test_subset_fit)
+```
+
+MAIN MULTIPLE REGRESSION
+
+## How does the 4 major ethnic groups/tribes, while holding for urban/rural & age affect the level of freedom of speech?
+Amhara is the reference group so when you examine Urban1 it shows that whether someone is Urban or Rural does not hold significance. Oromos appear to feel that they have less freedom of speech than Amharas but it is not statistically significant. Somalis appear to feel that they also feel less freedom of speech than Amharas and it is statistically significant. Tigres feel that they have more freedom of speech than Amharas and it is statistically signficant. It also appears that if there was neither urban/rural/, age or tribe, that the freedom level would be around 2.99 and it appears to be very statistically significant. Overall, based on the history of Ethiopia, I find that this survey conducted by Afrobameter appears to be done well and is reflected on the country. An important thing to note is that the r^2 and adjusted r^2 are low values which shows that model could be improved but due to time constraints/limitations, there are more variables that could bring a better fit for the model.
+```{r}
+test_subset_fit <- lm(Freedom ~ Urban + Age + tribe, data = subset_final_data)
+  summary(test_subset_fit)
+```
+
+##How does factoring for Urban/Rurual, Age and Tribe affect each individuals rating of their freedom of speech? 
+Age appears to be statistically significant when one holds for urban or rural and when one holds for tribe. 
+```{r}
+test_fit <- lm (Freedom ~ Urban + Age + tribe, data = final_data)
+  summary(test_fit)
+```
+
+## Conclusion
+- It appears age plays a statistically signficant role in how individuals rate their level of freedom of speech. Also when one focuses on the four major tribes we see the effect that the four major tribes actually have. With both Somali tribe and Tigre tribe having statistically significance. With somali's feeling less freedom of speech levels than Amharas which were the reference groups and Tigres feeling more freedom of speech levels than Amharas. Additionally, urban or rural classification no longer seemed to play a role in the ratings of level of freedom of speech once put into the regression line. Due to the nature of the research design being cross-sectional, the coeffcient does not represent a causal effect. Additionally, some limitations of this project was that there was a long list of questions that were asked and so I could only select a few factors that I thought could be important in how Ethiopians view their freedom of speech levels however the low Adjusted R-squared values indicat that there is more going on here and that the few variables that I selected are not showing the entire picture. I think a way to improve this study in the future is through finding way to improve the respondents likelihood of responding truthfully. Overall, I found that this project displayed an accurate representation of the levels of freedom of speech tribes state that they experience.
